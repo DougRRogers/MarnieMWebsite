@@ -1,0 +1,1488 @@
+Marnie Manhattan Website
+------------------------
+
+cPanel access: 	http://reaie502.mywhc.ca/cpanel
+Webmail access: 	http://reaie502.mywhc.ca/webmail
+Preview link: 	http://reaie502.mywhc.ca
+Username: 	reaie502
+Password: 	v1TSFg!H3as(54
+
+Your website may be accessed publicly at http://www.marniemanhattan.ca (the "www" is optional).
+
+You may also use this permanent link to view your site without your domain: http://reaie502.mywhc.ca
+
+
+FTP (or SFTP for secure transfers)
+(S)FTP Host: 	
+
+ftp.marniemanhattan.ca  (Note: you may alternatively use:   reaie502.mywhc.ca)
+Username: 	reaie502
+Password: 	v1TSFg!H3as(54
+Port: 	    21 for FTP (or 27 for sftp)
+Remote path: 	public_html
+
+DNS (Nameservers) Information
+Nameserver 1: cloud1.whc.ca
+Nameserver 2: cloud2.whc.ca
+
+For additional domain names (if you host multiple domain names on the same account), please use our classic DNS servers:
+Nameserver 1: ns1.whc.ca
+Nameserver 2: ns2.whc.ca
+Nameserver 3: ns3.whc.ca
+
+Email
+
+To create a new email address:
+https://clients.whc.ca/knowledgebase/117/Create-Email.html
+
+To read and send emails using Webmail:
+https://clients.whc.ca/knowledgebase/134/How-to-Use-Webmail.html
+
+To read and send emails using Outlook, Mail, Thunderbird, iPhone, or other mail software:
+https://clients.whc.ca/knowledgebase/103/Outlook.html
+
+Below are important parameters to help you configure your email in third-party software:
+Secure POP/IMAP server (SSL): 	berri.whc.ca
+Secure IMAP port (SSL): 	993
+Secure POP port (SSL): 	995
+Regular POP/IMAP server: 	mail.marniemanhattan.ca
+Regular IMAP port: 	143
+Regular POP port: 	110
+Secure SMTP server: 	berri.whc.ca
+Secure SMTP port (SSL): 	465
+Regular SMTP server: 	mail.marniemanhattan.ca
+Regular SMTP port: 	26
+
+Here are the details of your registration:
+
+Domain: marniemanhattan.ca
+Registration length: 1 Years
+Registration cost: $0.00
+Renewal date: 2022-10-30
+
+WEB PRO - marniemanhattan.ca (2021-10-30 - 2024-10-29) $287.64
+
+
+Promotional Code: BOO2021 - 58.32% One Time Discount $-167.75
+Domain Registration - marniemanhattan.ca - 1 Years (2021-10-30 - 2022-10-29) $0.00
+Sub Total $119.89
+5.00% GST $5.99
+9.975% Tax Due $11.96
+Credit $0.00
+Total $137.84
+
+------------------------------------------------------------------
+
+Creating MySQL Database on WHC
+From Control Panel, using MySQL Wizard
+
+Database name:  reaie502_MarnieM
+
+
+      Users: 1) Name: reaie502_DougRRogers
+                Host: <All Hosts (%)>
+                Role: DB Admin
+                Authentication:  yes MySQL
+                Pwd:  DRR(Msq)1!
+                All privileges
+                
+             2) Name: reaie502_Generic
+                Host: <All Hosts (%)>
+                Role: DB Manager
+                Auth: yes MySQL
+                Pwd:  Generic(msq)1!
+                All privileges
+
+====================================================================================
+
+
+MarnieM Site
+Locally:
+  on phpMyAdmin create new database:
+     MarnieM using utf8mb4_0900_ai_ci encoding
+   
+  create Table with:
+     IDCode	Name	ImgFilePath	ImgFilename	Medium	Style	Theme	Caption	Comments	Keywords	StartDate	FinishDate	Height	Width	Depth	Weight	Price	Location	History	Exhibited	Frame	Other
+
+  create two sample entries
+  
+Online
+  Database name:  reaie502_MarnieM
+  Table name:     Catalog
+
+----------------------------------------------------------------------  
+  
+Setting up database on WHC site:
+
+log onto local PHPMyAdmin
+select MarnieM database
+choose Export from buttons on top
+   Export method: Quick
+   Format: SQL
+   Go
+ creates MarnieM.sql on desktop
+
+ go to WHC cPanel:
+  	http://reaie502.mywhc.ca/cpanel
+Username: 	reaie502
+Password: 	v1TSFg!H3as(54
+ 
+launch phpMyAdmin from Cpanel
+go to reaie502_MarnieM database
+import:
+   select marniem.sql from desktop
+   hit Go
+   
+   get error: #1273 - Unknown collation: 'utf8mb4_0900_ai_ci'
+   so in marniem.sql replace all of those with utf8_general_ci
+   
+   new error:
+   #1253 - COLLATION 'utf8_general_ci' is not valid for CHARACTER SET 'utf8mb4'
+   
+   in marniem.sql change: from utf8mb4 to utf8mb3 everywhere
+   
+   success!
+   
+   New database login stuff:
+   
+<?php // 5_mySQLogin
+$db_hostname = 'localhost';  
+$db_database = 'reaie502_MarnieM';
+$db_username = 'reaie502'; //'DougRRogers';
+$db_password = 'v1TSFg!H3as(54'; //'DRR(Msq)1!';
+   
+   NOTE: WHC site is case sensitive, so "Catalog" had to be changed to "catalog" in all DB references in source code
+   
+   
+ 
+
+
+================================
+
+16-04-08
+  Transfer local activity to Blue ASUS:
+  1) Install Apache 2.4.18 Win64
+  2) Install PHP 7 (PHP 7.0.5) VC14 x64 Thread Safe
+  3) Install MySQL 5.5 (mysql-5.5.47-winx64.msi   from MariaDB)
+      OLD Password:  MSQLPW_NTOM
+      Password:  MSQL_DYZARENTR <<<<=====  Use THIS at MySQL Prompt!
+
+      Username: DRR
+        Host:   <all Hosts>
+        Role:   DB Manager
+        Authentication: MySQL
+        Password: DYZA_R_ENTR  ( OLD Password: NTOM_DRR )
+      
+      Windows Service Name:  MySQL  ( OLD Windows Service Name:  MySQL_NTOM )
+
+      After MySQL is installed...
+
+      Run "MySQL 5.6 Command Line Client"
+        Password is MSQL_DYZARENTR, produces  mysql> prompt
+ 
+  
+   Create new PSN specific user:
+      GRANT ALL ON *.* TO 'drrogers_DRRPSN'@'localhost' IDENTIFIED BY 'YE_wit@15-12';
+      
+   On Arvixe site add same user/pwd with all privileges
+   
+   Remotely:
+     download PSN database (export), move to YE/PSN as 
+        drrogers_PSN_16-04-08.sql
+        
+   Locally (at MSQL command prompt):
+   load the database with:
+            source 'D:/Doug/YE/05-PSN/DB Stuff/drrogers_PSN_16-04-08.sql';
+   
+   DIDN'T WORK because:
+     1) Need to set database first, with    use drrogers_PSN;
+     
+     2) Type “source path-to-SQL-file“. BUT, you must follow these rules:
+        - Use the full source command, not the \. shortcut
+        - Have no spaces in your path. I copied mine to a root of a drive. Note that spaces in the file name is OK, just not the path.
+        - Do not quote the file name, even if it has spaces. This gave error 22.
+        - Use forward slashes in the path, e.g., C:/path/to/filename.sql. Otherwise you’ll get error 2.
+        (- Do not end with a semicolon.)
+        
+    So this worked: 
+      source D:/Doug/YE/05-PSN/DBStuff/drrogers_PSN_16-04-08.sql;   
+      
+      
+      
+Try to run PSN locally, get this:
+Fatal error: Uncaught Error: Class 'mysqli' not found in D:\Doug\ApacheDocRoot\PSN\PSNSim.php:39 Stack trace: #0 {main} thrown in D:\Doug\ApacheDocRoot\PSN\PSNSim.php on line 39
+
+Probably because mysql is not set up in php.ini
+
+  in php.ini, need to uncomment  ;extension=php_mysqli.dll
+            
+      
+   
+  
+=======================================================  
+  
+Arrivx database:
+
+name: drrogers_PSN
+
+new User:  drrogers_DRR
+pwd:  YE_wit@15-12
+
+Create new local database with:
+create database drrogers_PSN;
+
+followed by:
+source 'D:/YE/05-PSN/DB Stuff/PSN_DB_15-12-16.sql';
+
+Then created new user with new password:
+mysql> CREATE USER 'drrogers_DRR'@'localhost' IDENTIFIED BY 'YE_wit@15-12';
+Query OK, 0 rows affected (0.28 sec)
+
+mysql> GRANT ALL PRIVILEGES ON * . * TO 'drrogers_DRR'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+
+New user name and password:  16-04-08
+GRANT ALL ON *.* TO 'drrogers_DRRPSN'@'localhost' IDENTIFIED BY 'YE_wit@15-12';
+
+  
+
+
+
+15-12-20:
+   Upgrade local version of php to :
+php-5.4.45-Win32-VC9-x86.zip
+
+   This is so I'm using a newer version than the AppZ version, 
+   and so I can use xDebug to enable profiling. This only works
+   with php 5.4.45 or later.  Also, this makes it compatible with
+   the Arivx site.
+   
+  Unzip php package, put php folder in Program Files
+use php.ini[inUse]-development  for php.ini  
+
+
+php.ini development vs. production
+   After standard installation, php configuration file /etc/php5/apache2/php.ini 
+   is set so as "production settings" which means, among others, that no error 
+   messages are displayed. So if you e.g. make a syntax error in your php source 
+   file, apache server would return HTTP 500 error instead of displaying 
+   the php syntax error debug message.
+   If you want to debug your scripts, it might be better to use the "development" 
+   settings. 
+
+NOTE:  In php.ini  be sure to uncomment this:
+extension=php_mysqli.dll
+
+   
+   
+xDebug:
+php_xdebug-2.4.0rc3-5.4-vc9.dll
+
+    Download php_xdebug-2.4.0rc3-5.4-vc9.dll
+    Move the downloaded file to C:\php
+    Create php.ini in the same folder as where php.exe is and add the line
+    zend_extension = C:\php\php_xdebug-2.4.0rc3-5.4-vc9.dll
+    Restart the webserver
+
+DONE:     zend_extension = C:\php\php_xdebug-2.4.0rc3-5.4-vc9.dll
+  ( in both dev and production versions)   
+
+Starting The Profiler
+
+Profiling is enabled by setting the xdebug.profiler_enable setting to 1 in php.ini. 
+This instructs Xdebug to start writing profiling information into the dump directory 
+configured with the xdebug.profiler_output_dir directive. The name of the generated 
+file always starts with "cachegrind.out." and ends with either the PID (process ID) 
+of the PHP (or Apache) process or the crc32 hash of the directory containing the 
+initially debugged script. Make sure you have enough space in your 
+xdebug.profiler_output_dir as the amount of information generated by the 
+profiler can be enormous for complex scripts, for example up to 500MB for 
+a complex application like eZ Publish.
+
+You can also selectively enable the profiler with the xdebug.profiler_enable_trigger 
+setting set to 1. If it is set to 1, then you can enable the profiler by using 
+a GET/POST or COOKIE variable of the name XDEBUG_PROFILE. The FireFox 2 extension 
+that can be used to enable the debugger (see HTTP Debug Sessions) can also be 
+used with this setting. In order for the trigger to work properly, 
+xdebug.profiler_enable needs to be set to 0.
+
+
+For Viewing xDebug output, use QCacheGrind - executable from downloaded package3
+
+--------------------------------------
+
+Arrivx database:
+
+name: drrogers_PSN
+
+new User:  drrogers_DRR
+pwd:  YE_wit@15-12
+
+Create new local database with:
+create database drrogers_PSN;
+
+followed by:
+source 'D:/YE/05-PSN/DB Stuff/PSN_DB_15-12-16.sql';
+
+Then created new user with new password:
+mysql> CREATE USER 'drrogers_DRR'@'localhost' IDENTIFIED BY 'YE_wit@15-12';
+Query OK, 0 rows affected (0.28 sec)
+
+mysql> GRANT ALL PRIVILEGES ON * . * TO 'drrogers_DRR'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+
+New user name and password:  16-04-08
+GRANT ALL ON *.* TO 'drrogers_DRRPSN'@'localhost' IDENTIFIED BY 'YE_wit@15-12';
+
+
+
+
+
+Arivx Site Stats
+Main Domain 	dougrrogers.info
+Home Directory 	/home/drrogers
+Last Login From 	171.233.62.145 
+Disk Space Usage 	1.15 GB / ∞
+File Usage 	15,096 / ∞
+Monthly Bandwidth Transfer 	131.51 MB / ∞
+Email Accounts 	0 / ∞
+Subdomains 	0 / ∞
+Parked Domains 	0 / ∞
+Addon Domains 	0 / 5
+FTP Accounts 	0 / ∞
+Mailing Lists 	0 / ∞
+All SQL Databases 	1 / ∞
+MySQL Databases 	1
+MySQL Disk Space 	0 MB
+Mailing List Disk Space 	0 MB
+Hosting Package 	PersonalClass
+Server Name 	dallas143
+cPanel Version 	11.52.1 (build 3)
+Theme 	x3
+Apache Version 	2.2.31
+PHP Version 	5.4.45
+MySQL Version 	5.5.47-MariaDB
+Architecture 	x86_64
+Operating System 	linux
+Dedicated IP Address 	143.95.69.197
+Path to sendmail 	/usr/sbin/sendmail
+Path to Perl 	/usr/bin/perl
+Perl Version 	5.10.1
+Kernel Version 	2.6.32-431.el6.x86_64
+cPanel Pro 	1.0 (RC1)  
+Service Status 	View
+
+
+
+
+Arvixe PASSWORD RESET on 16-02-26  to V****[6****
+Support Code is:  298839-AJEVA
+
+Arvixe HelpDesk  
+This email is confirmation that you are now registered at our helpdesk.
+Registered email: dougrrogers@gmail.com
+Password: 1pf4ju2r47 (16-02-26)
+You can visit the helpdesk to browse articles and contact us at any time: https://support.arvixe.com/
+Thank you for registering!
+
+
+Arvixe Web Hosting
+Helpdesk: https://support.arvixe.com/index.php?
+
+
+Domain:      dougrrogers.info
+Username:    drrogers (case sensitive)
+Server Name: plover.arvixe.com
+Expiration:  2017-03-10 00:30:21
+
+For further information and clarification please contact us with your domain name and username. We are here for you 24/7/365 at support@arvixe.com through email, 1-888-927-8493 through the phone and through live chat at our website http://www.arvixe.com.
+
+Control Panel Information
+  Address:     http://cpanel.dougrrogers.info
+  Alt Address: http://plover.arvixe.com/cpanel
+  Username:    drrogers
+  Password:    V****6**1
+  Arvixe PASSWORD RESET on 16-02-26  to V****[6****
+  Extra Information (Recommended):  To login using SSL (secure password), use https://plover.arvixe.com:2083
+
+FTP Publishing Information
+  Hostname:     dougrrogers.info
+  Alt Hostname: plover.arvixe.com
+  Username:     drrogers
+  Password:     (the password entered when you purchased your account)
+  Instructions: Please upload your website files into the 'public_html' directory.
+
+If you encounter problems connecting to our server with your web publishing or FTP software please contact us at support@arvixe.com with your specific problem along with your username and domain name.
+
+E-mail Account Information
+To setup your e-mail client, please first make sure that you have logged into the control panel (above) and have setup an e-mail account under the link "Email Accounts". Then, please enter the following information into your mail program to gain access to your e-mail account.
+
+Incoming Mail Server (POP or IMAP): mail.dougrrogers.info
+Alternate:  plover.arvixe.com
+Outgoing Mail Server (SMTP):  mail.dougrrogers.info
+Alternate:  plover.arvixe.com
+Username:  you@dougrrogers.info (this must have been setup in the control panel already)
+Password:  (the password entered when you setup your e-mail account)
+Extra Information (Advanced):  To use SSL, use the following ports - POP: 995, IMAP: 993, SMTP: 465
+
+
+Can't access the outgoing mail server? Some ISPs block the outgoing mail server port (25). Please change this port number to 26. If you continue to have problems, please contact us by emailing support@arvixe.com.
+
+Accessing Your Email On The Web
+This feature is useful for those who wish to check their e-mail account on-the-go. No configuration is necessary! To connect to your webmail for any account, please first make sure that you have logged into the control panel (above) and have setup an e-mail account under the link "Email Accounts". Then, click on the address below and input the username and password you setup through the control panel:
+
+Address:	http://webmail.dougrrogers.info
+Alternate Address:  http://webmail.plover.arvixe.com
+Username:  you@dougrrogers.info (this must have been setup in the control panel already)
+
+Password:  (the password entered when you setup your e-mail account)
+
+Extra Information (Recommended):  To login using SSL (secure password), please use https://plover.arvixe.com:2096
+
+Accessing Your Website
+Click on the following addresses to view your website.
+
+Address:  http://dougrrogers.info
+Alternate Address:  http://plover.arvixe.com/~drrogers
+
+Shared IP Information (Advanced)
+If you are going to be using your own nameservers and you have not purchased a dedicated IP for this account, Use the following IP address to setup your A record.
+
+Server's Shared IP:  198.252.66.122
+
+
+For Support:
+
+    Email support@arvixe.com or sales@arvixe.com with your query. You can track your past queries and our resolutions by logging in at http://support.arvixe.com. If you are not sure what your password is, either register here or request a new password here.
+    Contact our representatives 24/7/365 using the Live Chat feature on our website. Go to http://www.arvixe.com and click on the phone image at the top of the page.
+    Contact our representatives 24/7/365 by calling our toll free number at 1-888-927-8493
+    Ask our community for help at the community forum - http://forum.arvixe.com.
+    Find an answer to your question through our ever expanding knowledgebase and our blog - http://blog.arvixe.com.
+
+IMPORTANT INFORMATION ~ PLEASE READ
+
+    Please keep your billing information, especially your e-mail address, current by updating it at http://billing.arvixe.com. Do note that your billing username and password may be different from your hosting username and password. If you encounter problems, please contact us.
+    
+===================================================================================
+
+Website design:
+    960 pix wide - 960 is divisible by 2, 3, 4, 5, 6, 8, 10, 12, 15, 16, 20, 24, 30, 32, 40, 48, 60, 64, 80, 96, 120, 160, 192, 240, 320 and 480. This makes it a highly flexible base number to work with. 
+    
+    
+
+Email addresses:  PWDs set 21-01-24
+jobs@dougrrogers.info  PWD: Drri(jobs]1!
+doug@dougrrogers.info  PWD: Drri(doug]1!
+admin@dougrrogers.info PWD: Drri(admin]1!
+
+
+
+========================  End of Arrivx ==============================
+
+
+
+
+D
+Domains: Domain Transfer
+
+I want to transfer my website and domain to Web Hosting Canada
+
+R
+Ramakrishna joined
+
+R
+Hello, Douglas. I'm Ramakrishna. Welcome to Chat Support. I will help you with the website and domain concerns
+
+Please provide the 'Support Code' in your Billing Panel to authenticate the account. 
+
+D
+where do I find the support code?  If I go back to the billing panel I will lose this chat session
+
+R
+Please access the link for support code: 'https://customers.arvixe.com/clientarea.php' 
+
+Please copy the link and paste it into new tab
+
+D
+298839-139844
+
+R
+ Thank you for the authentication code. 
+
+I have located your account. 
+
+Could you please elaborate on your query more specifically, so that I can help you in the best way possible? 
+
+D
+I've tried to follow the steps to transfer my domain.  I had unlocked the domain, I got the EPP key and sent it to WHC.  But when I checked my WhoIs I see that the domain is still locked.  Also, I want to cancel the hosting service (it's already set up at WHC) but I don't want to do it abruptly, I want to make sure it goes smoothly
+
+How do I unlock the domain so that WHC can become the new registrar?
+
+R
+Thanks for the detailed information. 
+
+D
+I have already downloaded all the files from the Arvixe hosting site, so it can be closed safely, but I want to make sure the domain has been transferred properly before the switch
+
+R
+ad1 
+
+I do understand your concern. Don't worry, I will check this for you. 
+
+sorry for the typo
+
+Please allow me 3-4 minutes to check this with our billing admins. 
+
+D
+BTW, I had turned off Auto-Renew but discovered it was turned back on. I don't want to be billed (starting early March) for more hosting since I've already setup hosting at WHC.
+
+R
+ Meanwhile, Please fill this cancelation form to cancel the hosting:
+https://customers.arvixe.com/clientarea.php?action=cancel&id=331616
+
+D
+I've requested the cancellation.  Here's another issue: I'm having trouble changing the contact info for the domain.  I live in Canada now.  I tried changing it but it's still got my Hodor Court address in the US
+
+R
+No worries! I could see that the domain is already released and EPP code has been sent to you
+
+The domain can now definitely be transferred.
+
+The hosting will expire on 10 Mar, 2021
+
+Do you wish to cancel the hosting after the expiry date?
+
+D
+yes. I want to cancel the hosting since I've set up hosting at WHC.
+
+R
+No worries! The hosting will be cancelled automatically after the hosting expiry date
+
+D
+When I did a WHOIS search it indicated the domain is still locked:
+
+Registry Domain ID: D54679309-LRMS
+Domain Status:
+clientTransferProhibited
+serverTransferProhibited
+
+That was about 30 min ago.  Perhaps it's fully unlocked now and WHC can take over as registrar?
+
+R
+Yes! The domain is currently with 1API GmbH company
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================================
+=============================== PSN =====================================
+AppVZ: Your account has been created with the following details:
+https://www.ntom.vn:2222
+Username:	ntomvn
+Password:	xCT1DTzg
+Domain:		ntom.vn
+
+AppVZ login:
+(for support tickets)
+    email: dougrrogers@gmail.com
+    password:  iWTvIW49jp  (as of 2014/4/3)
+
+PHPMyAdmin login:
+    Username:	ntomvn_DRR
+    Password:	DRR_nt_02
+
+
+Then, on NTOM.vn, create a database:
+
+Your database has been setup. Use the following values:
+	Database:	ntomvn_PSN
+	Host:	localhost
+	Username:	ntomvn_DRR
+	Password:	DRR_nt_02
+
+  
+First, export the current PSN database, using the DOS command prompt:
+mysqldump -u ntomvn_DRR -pDRR_nt_02 ntomvn_psn > c:\PSN_DB_15-11-04.sql
+
+then use 7-zip to create a gz file:
+c:\PSN_DB_15-11-04.sql.gz
+
+Then go to AppZ website: 
+Then, on NTOM.vn, create a database:
+
+Your database has been setup. Use the following values:
+	Database:	ntomvn_NTOM
+	Host:	localhost
+	Username:	ntomvn_DRR
+	Password:	DRR_nt_02
+
+Then, upload c:\PSN_DB_15-11-04.sql.gz
+
+Success: Database has been successfully Restored
+
+  
+Then, on AppZ, launch phpMyAdmin
+
+===================================================================
+15-12-12
+  Uploading near release version of PSN to website: (4500x3000 pixel versions)
+
+1)  First, export the current PSN database, using the DOS command prompt:
+mysqldump -u ntomvn_DRR -pDRR_nt_02 ntomvn_psn > c:\PSN_DB_15-12-15.sql
+
+2)  Then use 7-zip to create a gz file:
+c:\PSN_DB_15-12-15.sql.gz
+
+3)  Then go to AppZ website: 
+
+4)  Then, on NTOM.vn, select ntomvn_PSN
+
+5) Then, upload c:\PSN_DB_15-12-15.sql.gz
+
+  result:  Success: Database has been successfully Restored
+
+6) Upload all php and other root files
+
+-------------------------------------------------------------------
+15-12-16
+  Uploading near release version of PSN to website,  2250x1500 pixel versions
+
+1)  First, export the current PSN database, using the DOS command prompt:
+mysqldump -u ntomvn_DRR -pDRR_nt_02 ntomvn_psn > c:\PSN_DB_15-12-16.sql
+
+2)  Then use 7-zip to create a gz file:
+c:\PSN_DB_15-12-16.sql.gz
+
+3)  Then go to AppZ website: 
+
+4)  Then, on NTOM.vn,  Username:	ntomvn  Password:	xCT1DTzg
+    go to MySQL Management
+    select ntomvn_PSN
+
+5) Then, upload c:\PSN_DB_15-12-16.sql.gz
+
+  result:  Success: Database has been successfully Restored
+
+6) Upload all php and other root files
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+============================================================================
+============================================================================
+
+
+AppVZ: Your account has been created with the following details:
+https://www.ntom.vn:2222
+Username:	ntomvn
+Password:	xCT1DTzg
+Domain:		ntom.vn
+
+AppVZ login:
+(for support tickets)
+    email: dougrrogers@gmail.com
+    password:  iWTvIW49jp  (as of 2014/4/3)
+
+PHPMyAdmin login:
+    Username:	ntomvn_DRR
+    Password:	DRR_nt_02
+
+
+Then, on NTOM.vn, create a database:
+
+Your database has been setup. Use the following values:
+	Database:	ntomvn_NTOM
+	Host:	localhost
+	Username:	ntomvn_DRR
+	Password:	DRR_nt_02
+
+--------------------------------------------
+Next, at ntom.vn  home, go to Manage MySQL,
+Click on phpMyAdmin
+login with:  
+
+
+AppVZ Versions Info:
+Apache 2.4.7	Running
+DirectAdmin 1.45.0	Running
+Exim 4.82	Running
+MySQL 5.5.37	Running
+Named 9.7.3 	Running
+ProFTPd 1.3.4d 	Running
+sshd 	Running
+dovecot 2.2.12 	Running
+Php 5.3.28	Installed
+
+
+
+Your account for ntom.vn is now ready for use.
+AppVZ.com <admin@appvz.com>
+	
+12/30/13 (3 days ago)
+		
+to me
+
+AppVZ.com
+
+
+Dear Customer,
+
+	Thank you for choosing our service to meet your web hosting needs.
+
+Your account has been created with the following details:
+
+Username:	ntomvn
+Password:	xCT1DTzg
+Domain:		ntom.vn
+
+To log in immediately, follow this link, using your username and password:
+
+https://chlothar.appvz.com:2222
+
+Once your domain resolves, you will be able to follow this link:
+
+https://www.ntom.vn:2222
+
+Bandwidth:	15000 Megabytes
+Disk Space:	100 Megabytes
+
+Virtual Domains:	1
+Subdomains:	unlimited
+
+POP Email Accounts:	unlimited
+Email Forwarders:	unlimited
+Email Autoresponders:	unlimited
+Email Mailing Lists:	0
+POP Server:	mail.ntom.vn
+SMTP Server:	mail.ntom.vn
+Login:	ntomvn
+Password:	xCT1DTzg
+
+FTP accounts:	unlimited
+Anonymous FTP:	OFF
+FTP Server:	ftp.ntom.vn
+Login:	ntomvn
+Password:	xCT1DTzg
+
+IP:	115.146.127.199 = IP Address of ntom.vn
+
+You must use these dns servers for your domain. They can be changed through your domain registrar.
+
+NS1:	ns5.appvz.com
+NS2:	ns6.appvz.com
+
+MySQL Databases:	unlimited
+Domain Pointers:	unlimited
+Secure Socket Layer:	ON
+PHP:	ON
+DNS control:	ON
+
+---
+Once again, thank you for choosing our hosting service
+Please don't hesitate to contact us if you have any questions
+Homepage: https://appvz.com
+
+=================================================
+
+Create email address:   doug@ntom.vn
+Password: Me(2014)
+
+Your account doug@ntom.vn has been setup. In your e-mail program, use:
+
+Click HERE to go back
+
+====================================================
+14-01-07
+Create email address:   info@ntom.vn
+password: NT(info)2014
+
+Your account info@ntom.vn has been setup. In your e-mail program, use:
+
+===========================================
+14-01-07
+
+NOTE: Vietnamese characters cannot be used in email address!
+
+Create email address:   bsns@ntom.vn
+password: NT(bsns)2014
+
+Your account bsns@ntom.vn has been setup. In your e-mail program, use:
+
+Create email address:   jobs@ntom.vn
+password: NT(jobs)2014
+
+Your account jobs@ntom.vn has been setup. In your e-mail program, use:
+
+=====================================================
+
+Me:
+
+Username:	doug@ntom.vn
+Password:	Me(2014)
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+
+Username:	dougrogers@ntom.vn
+Password:	(drr)_NT14
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+
+Username:	yowza@ntom.vn
+Password:	(yowza)_NT15
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+
+NTOM:
+
+Username:	info@ntom.vn
+Password:	NT(info)2014
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+---------------------------------------------
+
+Username:	bsns@ntom.vn
+Password:	NT(bsns)2014
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+---------------------------------------------
+
+Username:	jobs@ntom.vn
+Password:	NT(jobs)2014
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+-----------------------------------------
+
+Username:	test@ntom.vn
+Password:	NT-test-2014
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+-------------------------------------------
+
+Username:	support@ntom.vn
+Password:	NT(support)2104
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+--------------------------------------------
+
+Username:	orders@ntom.vn
+Password:	(NT2014)Orders
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+--------------------------------------------
+
+Username:	shopmsgs@ntom.vn
+Password:	(NT2014)ShopMsgs
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+
+--------------------------------------------
+Anonymous email for spam detection
+
+Username: allisonan21@ntom.vn
+Password:	anonNTOM[21]
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+
+
+===========================================
+
+Staff:
+
+Username:	duong@ntom.vn
+Password:	NT(duong)2014
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+
+Username:	huong@ntom.vn
+Password:	NT(huong)2014
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+
+Username:	huongltk@ntom.vn  ---  Created because huong@ntom.vn is weird
+Password:	HuongLTK92
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+
+DELETED 14-04-01  -----------------------
+Username:	han@ntom.vn
+Password:	NT(han)2014
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+-------------------------------------------
+
+Username:	megan@ntom.vn
+Password:	(NT2014)Megan
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+------------------------------------------
+
+Username:	113@ntom.vn
+Password:	NT(shop113)
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+-------------------------------------------
+
+Username:	DucLee@ntom.vn
+Password:	NT2014(DucLee)
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+-------------------------------------------
+
+Username:	yen@ntom.vn
+Password:	NT2014(Yen)
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+-------------------------------------------
+
+Username:	lucy@ntom.vn
+Password:	NT2014(Lucy)
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+-------------------------------------------
+
+Username:	LanLuTai@ntom.vn
+Username:	lanlutai@ntom.vn
+Password:	NT(DucLee)2014
+Pop3 Server:	mail.ntom.vn
+Smtp Server:	mail.ntom.vn
+-------------------------------------------
+
+==========================================
+
+
+POP server: ntom.vn
+Port: 110
+
+You must set correct for POP and SMTP: mail.ntom.vn, not use IMAP
+POP: port 110
+SMTP: port 25
+Secure type: STARTTLS
+
+
+==============================================================================
+
+MySQL Database
+
+14-04-19:
+
+First, export the current NTOM database, using the DOS command prompt:
+mysqldump -u root -pMSQLPW_NTOM yowzae73_NTOM > c:\yowzae73_NTOM_DB_14-04-19.sql
+
+then use 7-zip to create a gz file:
+c:\yowzae73_NTOM_DB_14-04-19.sql.gz
+
+Then, on NTOM.vn, create a database:
+
+Your database has been setup. Use the following values:
+	Database:	ntomvn_NTOM
+	Host:	localhost
+	Username:	ntomvn_DRR
+	Password:	DRR_nt_02
+
+Then, upload c:\yowzae73_NTOM_DB_14-04-19.sql.gz
+
+Success: Database has been successfully Restored
+
+--------------------------------------------
+Next, at ntom.vn  home, go to Manage MySQL,
+Click on phpMyAdmin
+login with:  
+Username:	ntomvn_DRR
+Password:	DRR_nt_02
+
+==================================================================================
+MySQL:
+
+Password:  MSQLPW_NTOM <<<<=====  Use THIS at MySQL Prompt!
+
+Username: DRR
+  Host:   <all Hosts>
+  Role:   DB Manager
+  Authentication: MySQL
+  Password: NTOM_DRR
+
+Windows Service Name:  MySQL_NTOM
+
+
+===================================================================================
+Creating Backups (going into C:\ base directory)
+
+EXECUTE FROM WINDOWS COMMMAND PROMPT, not MySQL prompt!
+(Note: c:\"Program files"\MySQL\"MySQL Server 5.6"\bin is in Windows Path, so no need to enter)
+
+[c:\"Program files"\MySQL\"MySQL Server 5.6"\bin\]   
+    mysqldump -u root -pMSQLPW_NTOM NTOM > c:\NTOM_DB_13-10-22(PreNewCNLSystem).sql  
+13-10-24, backup of intermediate work on CN update:
+    mysqldump -u root -pMSQLPW_NTOM NTOM > c:\NTOM_DB_13-10-24(MixOfCNUpdate_NotGood).sql
+13-10-26, backup of files used for CatNav update, before cleanup:	
+    mysqldump -u root -pMSQLPW_NTOM NTOM > c:\NTOM_DB_13-10-26(PostCNUpdate_PreCleanup).sql
+13-10-28, backup of files used for CatNav update, before cleanup:	
+    mysqldump -u root -pMSQLPW_NTOM NTOM > c:\NTOM_DB_13-10-28(PostCNUpdate_PreCleanup).sql
+	
+13-10-28, Good, post-cleanup backup:	
+    mysqldump -u root -pMSQLPW_NTOM NTOM > c:\NTOM_DB_13-10-28(GoodData,Clean,BaselineTables).sql
+	
+	
+To backup a single table, use:
+[c:\"Program files"\MySQL\"MySQL Server 5.6"\bin\]   
+    mysqldump -u root -pMSQLPW_NTOM NTOM ye_items > C:\NTOM_DB__YE_ITEMS__13-10-22(PreCNUpdate).sql
+
+
+You can load the dump file back into the server like this:
+
+shell> mysql db_name < backup-file.sql
+Or like this:
+
+shell> mysql -e "source /path-to-backup/backup-file.sql" db_name
+
+To create CSV files:
+[c:\"Program files"\MySQL\"MySQL Server 5.6"\bin\]
+    mysqldump -u root -pMSQLPW_NTOM --no-create-info --tab=c:/NTOM_DB_BU_13-11-08 --fields-terminated-by='\t' NTOM
+
+
+Restoring from a Backup File
+To restore a single database, use the -D option followed by the name of the database:
+   mysql -u user -ppassword -D publications < publications.sql
+   mysql -u root -pMSQLPW_NTOM NTOM < c:\NTOM_DB_13_07_27_SHOP_ILS.sql
+   
+[c:\"Program files"\MySQL\"MySQL Server 5.6"\bin\]
+    mysql -u root -pMSQLPW_NTOM -D NTOM < C:\NTOM_DB_13-10-28_NoVietCollation.sql
+
+To restore a single table to a database, use a command such as:
+[c:\"Program files"\MySQL\"MySQL Server 5.6"\bin\]
+    mysql -u root -pMSQLPW_NTOM -D NTOM < C:\NTOM_DB__YE_ITEMS__13-10-12(PreCNUpdate).sql
+
+
+Create the database:
+1)  CREATE DATABASE yowzae73_NTOM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+create a user:
+2) GRANT ALL ON *.* TO 'yowzae73_DR'@'localhost' IDENTIFIED BY 'DRR_nt_02';
+
+import the NTOM database into the new database:
+(At a DOS prompt):
+   mysql -u yowzae73_DR -pDRR_nt_02 -D yowzae73_NTOM < C:\NTOM_DB_13-10-28_NoVietCollation.sql
+
+======
+
+===============================================================================================
+
+1) Creating new CatNames_01  spreadsheet, with hiComprCatNavs, bilingual
+
+2) Save as CSV with UTF-8, tab, \r\n
+
+2) Import into NTOM DB with 
+mysql> LOAD DATA LOCAL INFILE 'D:/Yowza Enterprises/Projects/23-VirtualMarket/2-CatNames_HiCmprCatNav_NewOrdering_GoogTranslate_BEST_14-04-27.csv' INTO TABLE Cat_Names_01FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
+
+select * from catnames_01 ordered by OrderIx into outfile 'd:/catnames_01_14-04-27_MinSubCats.csv' FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n';
+
+LOAD DATA LOCAL INFILE 'D:/2-hicCatNavsAndNames-ECAudio_BL_MinSubCat_V18.csv' INTO TABLE CatNames_01 FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
+
+==============================================================
+
+shell> mysql db_name < backup-file.sql
+Or like this:
+
+shell> mysql -e "source /path-to-backup/backup-file.sql" db_name
+
+mysql -u root -pMSQLPW_NTOM -D ntomvn_ntom < D:/ApacheDocRoot/MySQLDataBaseDumps/ntomvn_NTOM_DB_14-05-06-FakeShopsData.sql
+
+==========================================================================================================================
+14-05-09:
+
+Uploading new CatNav based database.
+
+1) Using AppVA DirectAdmin tool, download current online database for backup
+    ( saved onto desktop as ntomvn_NTOM.gz )
+
+
+2) save current home database:
+mysqldump -u root -pMSQLPW_NTOM ntomvn_ntom > c:\NTOM_DB_14-05-09_NewCmprCatNavs.sql
+
+3) Then run 7Zip on saved file to create gz version:
+c:\NTOM_DB_14-05-09_NewCmprCatNavs.sql.gz
+
+4) Then delete current database from site:
+At Direct Admin, MySQL functions
+
+
+5) Then create new database:
+Your database has been setup. Use the following values:
+    Database:	ntomvn_NTOM
+    Host:	localhost
+    Username:	ntomvn_DRR
+    Password:	DRR_nt_02
+
+
+6) Now upload saved database
+At Direct Admin MySQL page, upload 
+  c:\NTOM_DB_14-05-09_NewCmprCatNavs.sql.gz
+  
+After a few minutes, get "Database restored"
+
+7) all website files, imgs_parts, etc. also updated
+
+========================================================================================
+
+14-05-14
+Do some MSDB cleanup:
+  clear activitylog
+  clear bundles
+  clear carts
+  clear customers
+  delete cart_1000,1001,1002
+  create views sinf,cinf,actinf,binf
+  NOTE: No real shop items added yet
+  
+Then save MSDB as:
+mysqldump -u root -pMSQLPW_NTOM ntomvn_ntom > c:\NTOM_DB_14-05-14_CleanABCC_FakeShopsItems_Views.sql  
+  
+
+14-05-20
+Transitioned to new alphanumeric CatNavs,
+catnames_01 has records of old and new values
+
+mysqldump -u root -pMSQLPW_NTOM ntomvn_ntom > c:\NTOM_DB_14-05-20_NewAlphaNumCN_FakeShopsItems_Views.sql
+
+Then clean up catnames_01:
+NewOrderIx => OrderIx
+New_Cat_Nav_X => CatNav_X
+CatNav_A => CatNav
++ drop the three original (old data) columns
+
+Then save MSDB as:
+mysqldump -u root -pMSQLPW_NTOM ntomvn_ntom > c:\NTOM_DB_14-05-20_OnlyAlaphNCNs_FakeShopsItems_Views.sql  
+  
+Because of new part numbering system, all catnames_ DB tables can be renamed with a single digit, so
+renamed all tables:
+catnames_00 => catnames_0
+catnames_01 => catnames_1
+...
+catnames_08 => catnames_8
+ 
+
+=================================================================================
+14-05-21
+Decide to consolidate all catnames into one DB,
+1) rename catnames_8 => catnames
+2) Create masterlist of all catnames with Electronics, Computers, Audio, Tools
+    CatNames_MasterList(AllCats)_14-05-21.csv    (with tabs)
+3) import to catnames:
+LOAD DATA LOCAL INFILE 'D:/Yowza Enterprises/Projects/23-VirtualMarket/2-CatNames_HiCmprCatNav_NewOrdering_GoogTranslate_BEST_14-04-27.csv' INTO TABLE Cat_Names_01FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
+
+
+LOAD DATA LOCAL INFILE 'D:/NTOM/DataBase Stuff/CatNames_MasterList(AllCats)_14-05-21.csv' INTO TABLE catnames FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
+
+
+WHEN LINES ARE SKIPPED - that means dups in the primary key.
+Create a table without primary key, load it with same csv
+Then do:
+   select * from catnames_7 where catnav in (select catnav from catnames_7 group by catnav having count(*) > 1);
+
+   
+New, simple CatNames works, so dropped all catnames_ tables
+
+mysqldump -u root -pMSQLPW_NTOM ntomvn_ntom > c:\NTOM_DB_14-05-21_OneCatnamesWithAlaphNCNs_FakeShopsItems.sql    
+Then sent it through 7zip to create
+mysqldump -u root -pMSQLPW_NTOM ntomvn_ntom > c:\NTOM_DB_14-05-21_OneCatnamesWithAlaphNCNs_FakeShopsItems.sql.gz
+
+
+   
+   
+===================================================================================
+14-05-22
+Delete current database from ntom site:
+
+4) Then delete current database from site:
+At Direct Admin, MySQL functions
+- in overall structure:
+   check all
+   drop all
+    - didn't work,
+    
+- instead, delete db from opening screen    
+   
+
+
+5) Then create new database:
+Your database has been setup. Use the following values:
+    Database:	ntomvn_NTOM
+    Host:	localhost
+    Username:	ntomvn_DRR
+    Password:	DRR_nt_02
+
+
+6) Now upload saved database
+At Direct Admin MySQL page, upload 
+  c:\NTOM_DB_14-05-09_NewCmprCatNavs.sql.gz
+  
+After a few minutes, get "Database restored"
+
+7) all website files, imgs_parts, etc. also updated
+
+All good.  Now it's possible to browse more top categories (Computers, Audio, Tools)
+
+==============================================================
+14-06-02
+New catnames added for computers and security (very partial)
+
+Master list saved as:
+CatNames_MasterList_14-06-02.csv
+
+First, do backup of local NTOM DBs:
+
+mysqldump -u root -pMSQLPW_NTOM ntomvn_ntom > c:\NTOM_DB_14-06-02_BeforeCatNamesUpdate_CompSec.sql
+
+Then delete all lines from current catnames:
+
+
+
+Then load new catnames info:
+LOAD DATA LOCAL INFILE 'D:/NTOM/DataBase Stuff/Catnames_MasterList_14-06-02.csv' INTO TABLE catnames FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
+
+Had some problems:
+Query OK, 4960 rows affected, 1 warning (1.01 sec)
+Records: 4983  Deleted: 0  Skipped: 23  Warnings: 1
+
+to show warnings, enter:
+
+SHOW WARNINGS;
+
+
+
+WHEN LINES ARE SKIPPED - that means dups in the primary key.
+Create a table without primary key, load it with same csv
+
+CREATE TABLE catnames_noPK (
+CatNav         varchar(20),
+CatName_E      VARCHAR(60) NOT NULL,
+CatName_V      VARCHAR(60) NOT NULL,
+Comn_Link_Name VARCHAR(60),
+Comn_Nxt_Link  INT UNSIGNED,
+Spec_Labels_E  VARCHAR(700),
+Spec_Labels_V  VARCHAR(700),
+INDEX ( CatNav )
+);
+
+LOAD DATA LOCAL INFILE 'D:/NTOM/DataBase Stuff/Catnames_MasterList_14-06-02.csv' INTO TABLE catnames_noPK FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
+
+Then do:
+   select catnav from catnames_noPK group by catnav having count(*) > 1
+
+   to get a list of duplicates:
+catnav
+------sql LOAD DATA LOCAL INFILE
+
+21173
+211733
+211735
+211737
+211739
+27D7
+27D73
+27D75
+27D77
+27D79
+27D7B
+27D7D
+27D7F
+27D7H
+3746
+377
+453B
+7147
+7AF7
+7B33
+7B35
+7B37
+7T73
+
+Fix all, resave file.  Reload, check for dupes.
+
+===================================================================================
+14-06-03
+
+Uploading new catnames table to OL_NTOM:
+
+First, save the table with a mysql dump:
+
+mysqldump -u root -pMSQLPW_NTOM ntomvn_ntom catnames > c:\NTOM_DB_14-06-03_catnamesOnly.sql
+
+Use 7-zip to create gz file:
+c:\NTOM_DB_14-06-03_catnamesOnly.sql.gz
+
+Not sure if uploading this file as "Restore Database backup" would wipe out my entire database though,
+so instead:
+
+at Online site, EMPTY (TRUNCATE) catnames,
+then paste the INSERT part of NTOM_DB_14-06-03_catnamesOnly.sql in the online SQL prompt 
+- took a while to execute (upload), but it worked.
+
+==============================================================================
+
+Adding/Updating catnames for new categories:
+On local MSQDB:
+
+INSERT INTO catnames (CatNav,CatName_E,CatName_V,Comn_Nxt_Link) VALUES ('3L','Video Accessories','Video Accessories',0);
+
+or  
+
+UPDATE catnames SET CatNav = '' where CatNav='';
+
+
+, '$2a$08$EHXwrgwEsyAWEnikBx0Cs.n7Ajm6yoA7E1Oco6aFW70AhVTAxQD5y' = ABC123xyz
+
+
+===========================================================================
+Setting auto-increment
+
+ALTER TABLE nt_items AUTO_INCREMENT=13752;
+ALTER TABLE shop_il_135 AUTO_INCREMENT=1;
+
+===========================================================================
+Cleaning up after bad integration:
+From XX_Imgs_Parts remove all current date/time images added
+From shopNNN/ItemImgs remove all  current date/time images added
+From shopNNN/ItemImgs remove all Shop_1, Prod_1, BC_ etc.
+
+DELETE FROM shop_il_135;
+ALTER TABLE shop_il_135 AUTO_INCREMENT=1;
+DELETE FROM nt_items WHERE  NTParts_Ix>=13792;
+ALTER TABLE nt_items AUTO_INCREMENT=13792;
+
+==========================================================================
+
+Adding/Updating catnames for new categories:
+On local MSQDB:
+
+INSERT INTO catnames (CatNav,CatName_E,CatName_V,Comn_Nxt_Link) VALUES ('3L','Video Accessories','Video Accessories',0);
+
+or  
+
+UPDATE catnames SET CatNav = '' where CatNav='';
+
+
+-------------------------------------------------------------------------
+
+
+==============================================================
+14-06-19
+Backup current DB which has fake shops 113 and 157, and NT_Items with many fake items
+
+mysqldump -u root -pMSQLPW_NTOM ntomvn_ntom > c:\NTOM_DB_14-06-19-PreOnlyRealData.sql
+
+
+
+==============================================================
+To avoid entering all new shops by hand:
+1) Download NTOM db from ntom.vn
+2) Save Shops INSERT command, _ILs, and Bndls for new shops
+3) DELETE FROM shops to wipe out existing shops
+4) import the NTOM database into the new database:
+(At a DOS prompt):
+   mysql -u root -pMSQLPW_NTOM ntomvn_ntom < C:\ntomvn_NTOM-shopsILsBndls_DLFromNTOM.vn_14-06-21.sql
+5) Create new shopNNN and nickname folders
+
+==============================================================   
+Integrating Inventories:
+1) use localhost/64_Admin_ImportNTPartsInfo.php
+2) Move inventories to integrate to XX_ShopInventoryUploads
+3) When integrating, check:
+    - NT_Items before/after   SELECT COUNT(*) FROM nt_items;
+    - shop_il_NNN before/after  SELECT COUNT(*) FROM shop_il_;
+    - monitor shopNNN folder
+    
+   When finished integrating:
+    - search for known parts
+    - login as shop, do View Inventory
+    
+  First integration:  S999_InvInfo_P1_14-06-19.zip
+    NT_Items before:     3930    after:
+    Shop_il_999 before:     0    after:
+    Num XX_ImgsParts  before:  2418  after:
+    
+   first run in debug mode:
+
+mysql -u root -pMSQLPW_NTOM ntomvn_ntom < C:\NewACAdapatorCatNames.sql
+   
+   
+============================================================================
+14-07-16 - Clear Shop_Il's, NT_Items, upload fresh, updated shop inventories
+
+1) First backup current dB:
+
+mysqldump -u root -pMSQLPW_NTOM ntomvn_ntom > c:\NTOM_DB_14-07-16_PreFreshInvDBs.sql   
+
+and on NTOM.vn,backup current dB, downloads as ntomvn_NTOM.gz, renamed to: 
+ntomvn_NTOM_PreFreshInvDBs_14-07-16.gz 
+and unpacked as
+ntomvn_NTOM_PreFreshInvDBs_14-07-16.sql
+
+2) backup images, shopSite folders, 
+
+3) Test invImport
+
+4) 
+
+
+
+
+
+===================================
+
+select NTParts_Ix,Date_Last_Mod,NT_Item_CatNav,NT_Item_PartExt,SUBSTR(Part_Name_E,1,25),SUBSTR(Part_Name_V,1,25),Manufacturer,SUBSTR(Mfr_Part_Num,1,25),Shops_List from NT_Items LIMIT 50;
+
+
+==========================================
+14-08-31:
+
+Replace LOCAL dB data with online dB data (up to date Catnames, ~20 shops integrated, cleaned up carts, activity log)
+
+mysqldump -u root -pMSQLPW_NTOM ntomvn_ntom > c:\NTOM_DB_14-08-31_PreUpdateFromOLNTOM.sql   
+
+----------------------
+
+mysql -u root -pMSQLPW_NTOM -D ntomvn_ntom < C:\ntomvn_NTOM_14-08-31_AfterCleanup.sql
+

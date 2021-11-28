@@ -1,0 +1,577 @@
+/* MarnieM.css 21-10-04 - CSS for all MarnieManhattan.ca html/php files*/
+
+@import url('Normalize.css'); /* Normalize.css for default browser settings */
+
+
+/* ===========  Marnie Manhattan specific =================*/
+
+/* ========= index  (ixPg) ========== */
+@font-face {
+  font-family: neonLostWage;
+  src: url(LOSTWAGE.TTF);
+}
+
+#ixPgMainTitle {
+  margin: auto;
+  width: 500px;
+  height: 30px;
+/*    border: 2px solid red; */
+  text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: Arial; /* neonLostWage; */
+  text-transform: uppercase;
+}
+
+#ixPgTopMenuBar {
+  margin: auto;
+  width: 600px;
+  height: 30px;
+/*  border: 2px solid orange; */
+
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
+  font-size: 15px;
+  font-family: Arial;
+}
+
+ul#topMenu li{
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.noDecList {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 5px;
+}
+
+#ixPgMediaSideBar {
+  width: 120px;
+  height: 500px;
+  background-color: palepink;
+  /* border: 2px solid blue; */
+  font-size: 13pt;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+
+}
+
+#sidebarTitle {
+   text-align: center;
+   font-family: cursive;
+   font-size: medium;
+   font-weight: bold;
+}
+
+#dispPanel {
+  width: 90%;
+  height: 500px;
+/*      border:2px solid magenta; */
+  font-size: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#ixPgDispStyleBtns {
+  display: flex;
+  justify-content: space-evenly;
+  /* border:2px solid purple; */
+  font-size: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.ixPgDispStyleImg {
+  border: 1px solid black;
+  margin: 2px 0;
+}
+
+.ixPgIFrame {
+  border: none;
+  height: 700px;
+  width: 800px;
+}
+
+/* ========================= Opening Page =======================*/
+div.hmPgContent {
+  text-align: center;
+}
+
+div.hmPgMainDiv{
+  height: 400px;
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px;
+}
+
+div.hmPgText {
+  height: 250px;
+  width: 400px;
+}
+
+img.hmPgImg {
+  height: 200px;
+  width: 200px;
+}
+
+
+
+/* ------------  Disp Full Images page --------------------*/
+
+div#HL-Title {
+  font-family: Arial;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 5px;
+  text-align: center;
+}
+
+div#HL-Subtitle {
+  font-family: Arial;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 2px;
+}
+
+div#HL-ImgDiv {
+/*  margin: 15px 0 25px 0; */
+  padding: 3px;
+  font-family: Arial;
+  text-align: center;
+}
+
+div#HL-ImgCaption{
+  font-family: Arial;
+  font-size: 1em;
+  padding: 5px;
+}
+
+div#HL-ImgSeqNum{
+  font-family: Arial;
+  font-size: .5em;
+  padding: 3px;
+}
+
+img#HL-Img {
+  max-height: 480px;
+  width: auto;
+  border: 2px solid white;
+  box-shadow: 0px 7px 6px black;
+}
+
+div#HL-Other{
+  display: inline-block;
+  font-family: Arial;
+  font-size: 1em;
+  padding: 5px;
+  margin: 0 30px;
+}
+
+span.HL-LinkToHL {
+  margin: 0 5px;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+div#HL-BtnsBox {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background-color: #FEFCFF;
+  font-size: 0.7em;
+  text-align: center;
+  border: 1px solid black;
+}
+
+#homePage {
+  background-color: #5E80AE;
+  background-image: url('/ZZ_Imgs/MarnieM-bgnd.jpg');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+  #homePage .NameAndInfo {
+    color: gold;
+    font-family: Times;
+    font-size: 40pt;
+    position: fixed;
+    top: 5%;
+    width: 200px;
+    /* margin-top: 30%;*/
+    /* float: left;*/
+    /* border: 2px solid green;*/
+  }
+
+
+div.DetailsTitlePrevNext {
+  display: flex;
+  flex-direction: row;
+  font-size: 20pt;
+  font-weight: bold;
+  justify-content: space-around;
+  /* justify-content: space-between; */
+  margin: 10px;
+}
+
+div.btnPrevNext {
+  background: #4479BA;
+  border: solid 1px #20538D;
+  border-radius: 4px;
+  color: #FFF;
+  font-size: 14pt;
+  font-weight: normal;
+  height: 25px;
+  margin: 0 20px;
+  text-align: center;
+  /* padding: 10px 15px; */
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  width: 70px;
+}
+div.btnPrevNext:hover {
+  background: #356094;
+  border: solid 1px #2A4E77;
+  text-decoration: none;
+}
+
+/* =================  22_DispGrid.php  ===================================*/
+.gridWrapper3col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+.gridWrapper4col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+.gridWrapper5col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+.gridCellDiv{
+  height: 200px;
+  width: 200px;
+  display: table;
+}
+
+.gridImgDiv {
+/*  border: 1px solid green; */
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.gridImg {
+  max-height: 150px;
+  max-width: 150px;
+  border: 2px solid white;
+  box-shadow: 0px 3px 3px black;
+}
+
+
+/* ========== ~General Purpose/Debugging ======================= */
+/* ------------  General Purpose ---------------------- */
+
+/* ======== ~All Pages ================= */
+main {
+  margin-top: 10px;
+  margin-left: 3%;
+}
+
+a { text-decoration: none; } /* underlines are done with hover */
+
+a.goldlink:link { color: gold; }      /* This is modified on some pages */
+a.goldlink:visited { color: orange; } /* This is modified on some pages */
+a.goldlink:hover { text-decoration: underline; }
+a.goldlink:active { color: red; }
+
+.brdBlk {  border: 1px solid black;  }
+.brdBlu {  border: 1px solid blue;  }
+.brdRed {  border: 1px solid red;  }
+.brdYel {  border: 1px solid yellow;  }
+.brdGrn {  border: 1px solid green;  }
+.brdOrg {  border: 1px solid orange;  }
+.brdMgn {  border: 1px solid magenta;  }
+.brdBrn {  border: 1px solid brown;  }
+
+/* Standard defaults for h's */
+ h1 {
+    display: block;
+    font-size: 2em;
+    margin: 0.67em 0;
+    font-weight: bold;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin: 0.83em 0;
+    font-weight: bold;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin: 1em 0;
+    font-weight: bold;
+    /* color: gold; */
+}
+
+h4 {
+    display: block;
+    font-size: 1em;
+    margin: 1.33em 0;
+    font-weight: bold;
+}
+
+h5 {
+    display: block;
+    font-size: .83em;
+    margin: 1.67em 0;
+    font-weight: bold;
+    /* color: aqua; */
+}
+
+h6 {
+    display: block;
+    font-size: .67em;
+    margin: 2.33em 0;
+    font-weight: bold;
+}
+
+button,input,optgroup,select,textarea {
+  font: inherit; /* 1 */
+  margin: 3px; /*   was 0 in original version, edited by DRR  2 */
+}
+
+
+.underline { text-decoration: underline; } /* for obvious links */
+
+.firstLineOverhang { text-indent: -6%; }
+
+.Empty-1000x600Pix { /* so bottom of shorter pages doesn't show up too soon */
+  height: 600px;
+  width: 1000px;
+}
+
+.flex {  display: flex; }
+.flex-btw {  display: flex;  align-content: space-between; }
+.horFlexBox {  display: flex;  flex-direction: row;  /* border: 2px solid green; */ }
+.horRLFlexBox {  display: flex;  flex-direction: row-reverse;  /* border: 2px solid green; */ }
+.horFlexBox-Even {  display: flex;  flex-direction: row;  justify-content: space-around; }
+.horFlexBox-Center {  display: flex;  flex-direction: row;  align-items: center; }
+.vertFlexBox {  display: flex;  flex-direction: column; }
+.flexCenter {  display: flex;  flex-direction: row;  align-items: center; }
+
+.whiteBorder{ border: 2px solid white; vertical-align: middle; }
+/* ----------  End of Generic css -----------------------------------*/
+
+
+
+/*-- Fonts ---------------------- */
+* { font-family: "Arial"; }
+
+.F1pt { font-size: 1pt; }
+.F4pt { font-size: 4pt; }
+.F5pt { font-size: 5pt; }
+.F6pt { font-size: 6pt; }
+.F7pt { font-size: 7pt; }
+.F8pt { font-size: 8pt; }
+.F9pt { font-size: 9pt; }
+.F10pt { font-size: 10pt; }
+.F12pt { font-size: 12pt; }
+.F14pt { font-size: 14pt; }
+
+.bold { font-weight: bold; }
+.noDecor { text-decoration: none; }
+
+/*-- Color ---------------------- */
+.hidden { visibility: hidden; }
+.black { color: black; }
+.red {  color: red; }
+.blue { color: blue; }
+.green { color: green; }
+.lime { color: lime; }
+.brown { color: brown; }
+.whiteBG { background-color: white; }
+.paleYellowBG { background-color: #FFFFCC; }
+.veryLightGrayBG { background-color: #EEEEEE; }
+
+select.liClr{ background-color: aqua; }
+
+body.TanBody { background-color: tan; width: 700px; }
+
+/*-- Alignment ---------------------- */
+.txt_rt { text-align: right; }
+.txt_lf { text-align: left; }
+.vertCenter { vertical-align: middle; }
+.marg5px { margin: 5px; }
+.centered { text-align: center; }
+.clearfloat { clear: both; }
+
+/*--  Display  --------------------*/
+.hidden { display: none; }
+
+/*--  Border ----------------------*/
+.NoBorder { border: 0; }
+.whiteBorder { border: 2px solid white; vertical-align: middle; }
+
+/*--  Cursors -----------------------*/
+.linkCur { cursor: pointer; }
+.moveCur { cursor: move; }
+.clickCur { cursor: pointer; }
+
+/* -- Misc ------------------------*/
+
+.linkBtn {
+  background-color: lightgray;
+  border: 2px solid black;
+  padding: 2px 4px;
+}
+div.DragP {
+ border: 2px solid green;
+ text-align: center;
+}
+legend { font-weight: bold; }
+/*
+table {
+border: 1px solid black;
+border-collapse: collapse;
+}
+*/
+
+table.NoBorder0Marg tr td{
+border: 0px solid black;
+margin: 0 auto;
+}
+
+.clearFloats {
+clear: both;
+}
+
+.input1em {  width: 1em;  margin-right: 4px; }
+.input2em {  width: 2em;  margin-right: 4px; }
+.input4em {  width: 4em;  margin-right: 4px; }
+.input6em {  width: 6em;  margin-right: 4px; }
+.input8em2mar {  width: 7em;  margin-right: 2px; }
+.input8em {  width: 8em;  margin-right: 4px; }
+.input10em {  width: 10em;  margin-right: 4px; }
+.input12em {  width: 12em;  margin-right: 4px; }
+.input16em {  width: 16em;  margin-right: 4px; }
+.input20em {  width: 20em;  margin-right: 4px; }
+.input24em {  width: 24em;  margin-right: 4px; }
+
+::-webkit-calendar-picker-indicator{
+  margin-left: -2px;
+}
+
+.uline {  text-decoration: underline; }
+
+
+
+/* put these at the bottom so they override any other settings,
+final property addition to a class chain */
+/* -- Debugging ----------------- */
+.DB_r{border:2px solid red;}    .DB_g{border:2px solid green;}
+.DB_b{border:2px solid blue;}   .DB_v{border:2px solid violet;}
+.DB_y{border:2px solid yellow;} .DB_o{border:2px solid orange;}
+
+/*-- Fonts ---------------------- */
+.F1pt{font-size: 1pt;} .F4pt{font-size: 4pt;} .F5pt{font-size: 5pt;}
+.F6pt{font-size: 6pt;} .F7pt{font-size: 7pt;} .F8pt{font-size: 8pt;}
+.F9pt{font-size: 9pt;} .F10pt{font-size: 10pt;} .F12pt{font-size: 12pt;}
+.F14pt{font-size: 14pt;}
+
+.Arial{font-family: Arial;} .Times{font-family: Times;}
+.bold{font-weight: bold;}  .noDecor{text-decoration: none;}
+.italic{ font-style: italic;}
+
+.black{color:black;}   .red{color:red;}   .blue{color:blue;}
+.green{color:green;}   .lime{color:lime;} .brown{color:brown;}
+.yellow{color:yellow;} .gold{color:gold;}
+
+.whiteBG{background-color: white;}           .paleYellowBG{background-color: #FFFFCC;}
+.veryLightGrayBG{background-color: #EEEEEE;} .violetBG{background-color: violet;}
+.blueBG{background-color: blue;}             .transparentBgnd{background: none;}
+
+/*-- Alignment ---------------------- */
+.txt_ar{text-align:right;}     .txt_al{text-align:left;}
+.txt_cent{text-align:center;}  .margCentered{margin: 0 auto;}
+.inlineBlock { display: inline-block; }
+.centeredBlock{display: block; margin-left: auto; margin-right: auto;}
+.vertCenter{vertical-align: middle;}
+.float-left{float:left;} .float-right{float:right;} fa.clearfloat{clear:both;}
+
+/*--  Indent, Margins and Padding  --------------------*/
+  .txtIndent5Pct {text-indent: 5%;}   .txtIndent10Pct {text-indent: 10%;}
+  .txtIndent15Pct {text-indent: 15%;} .txtIndent20Pct {text-indent: 20%;}
+  .txtIndent30Pct {text-indent: 30%;}
+
+  .marg-l-2Pct{margin-left: 2%;}   .marg-l-5Pct{margin-left: 5%;}
+  .marg-l-15Pct{margin-left: 15%;} .marg-l-10Pct{margin-left: 10%;}
+  .marg-l-20Pct{margin-left: 20%;} .marg-l-30Pct{margin-left: 30%;}
+  .marg-l-40Pct{margin-left: 40%;}
+  .marg-l-5px{margin-left: 5px;}   .marg-r-5px{margin-right: 5px;}
+  .marg-l-10px{margin-left: 10px;} .marg-r-10px{margin-right: 10px;}
+  .marg-l-20px{margin-left: 20px;} .marg-r-20px{margin-right: 20px;}
+  .marg-l-30px{margin-left: 30px;} .marg-r-30px{margin-right: 30px;}
+  .marg-l-50px{margin-left: 50px;} .marg-r-50px{margin-right: 50px;}
+  .marg-l-75px{margin-left: 75px;} .marg-r-75px{margin-right: 75px;}
+  .marg-l-100px{margin-left: 100px;} .marg-r-100px{margin-right: 100px;}
+  .topMargin2Pct{margin-top: 2%;}   .topMargin5Pct{margin-top: 5%;}
+  .topMargin10Pct{margin-top: 10%;} .topMargin20Pct{margin-top: 20%;}
+  .topMargin30Pct{margin-top: 30%;} .topMargin40Pct{margin-top: 40%;}
+  .marg5px{margin:5px;} .marg15px{margin:15px;} .marg25px{margin:25px;}
+  .topMargin0{margin-top: 0;}       .botMargin0{margin-bottom: 0;}
+
+  .pad-l-5px{padding-left: 5px;}     .pad-r-5px{padding-right: 5px;}
+  .pad-l-10px{padding-left: 10px;}   .pad-r-10px{padding-right: 10px;}
+  .pad-l-20px{padding-left: 20px;}   .pad-r-20px{padding-right: 20px;}
+  .pad-l-30px{padding-left: 30px;}   .pad-r-30px{padding-right: 30px;}
+  .pad-l-50px{padding-left: 50px;}   .pad-r-50px{padding-right: 50px;}
+  .pad-l-75px{padding-left: 75px;}   .pad-r-75px{padding-right: 75px;}
+  .pad-l-100px{padding-left: 100px;} .pad-r-100px{padding-right: 100px;}
+  .pad-l-130px{padding-left: 130px;} .pad-r-130px{padding-right: 130px;}
+  .pad-t-5px {padding-top: 5px;}     .pad-b-5px {padding-bottom: 5px;}
+  .pad-t-10px{padding-top: 10px;}    .pad-b-10px{padding-bottom: 10px;}
+  .pad-t-30px{padding-top: 30px;}    .pad-b-30px{padding-bottom: 30px;}
+  .pad-t-50px{padding-top: 50px;}    .pad-b-50px{padding-bottom: 50px;}
+  .pad-t-100px{padding-top: 100px;}  .pad-b-100px{padding-bottom: 100px;}
+  .pad-5px{padding: 5px;}            .pad-10px{padding: 10px;}
+  .pad-20px{padding: 20px;}          .pad-30px{padding: 30px;}
+  .topPad0{padding-top: 0;}          .botPad0{padding-bottom: 0;}
+
+  /*--  Display  --------------------*/
+  .notDisplayed{display: none;}  .hidden{visibility: hidden;}
+/*--  Border ----------------------*/
+  .NoBorder{border: 0;}
+/*--  Cursors -----------------------*/
+  .linkCur{cursor: pointer;} .moveCur{cursor: move;} .clickCur{cursor: pointer;}
+/*--  List Styles -------------------*/
+  .noMarker{list-style-type: none;}
+
+/*  GRADIENTS in different browsers
+For Safari 5.1-6.0;For Opera 11.1-12.0;
+For Firefox 3.6-15; Standard syntax
+  background: linear-gradient(direction, color-stop1, color-stop2, ...);
+#grad {
+  background: -webkit-linear-gradient(red, blue);
+  background: -o-linear-gradient(right, green, DarkBlue);
+  background: -moz-linear-gradient(right, green, DarkBlue);
+  background: linear-gradient(right, green, DarkBlue);
+}
+*/
+

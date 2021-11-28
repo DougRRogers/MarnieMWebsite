@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/vue@next"></script>
+  <title>Marnie Manhattan - Artist</title>
+  <link rel="shortcut icon" href="/favicon.ico?v=2"/>  
+  <link rel="stylesheet" href="ZZ_css/MarnieM.css">
+  <link rel='stylesheet' type="text/css" href='ZZ_css/ZZ_Admin.css'>
+</head>
+<body>
+  <div id=ixPgMainTitle>
+    <h1>Marnie Manhattan</h1>
+  </div>
+
+  <div id="ixPgTopMenuBar">
+    <ul id="topMenu" >
+    <li id='topMenu_HOME'>HOME</li>
+    <li id='topMenu_BIO'>BIO</li>
+    <li id='topMenu_THEMES'>THEMES</li>
+    <li id='topMenu_EXHIB'>EXHIBITIONS</li>
+    <li id='topMenu_ARTICLES'>ARTICLES</li>
+    <li id='topMenu_CONTACT'>CONTACT</li></ul>
+  </div>
+
+  <div class='flex'>
+    <div id='ixPgMediaSideBar'>
+      <div id='ixPgDispStyleBtns'>
+        <img id='dispStyle_Grid' class='ixPgDispStyleImg' src="ZZ_Imgs/dispStyle_Grid.png" title="Grid display" alt="Grid display">
+        <img id='dispStyle_FullImage' class='ixPgDispStyleImg' src="ZZ_Imgs/dispStyle_Full.png" title="Full image" alt="Full image">
+      </div>
+
+      <ul class='noDecList'>
+        <li id='galDisp_All'>All</li>
+        <li id='galDisp_Paintings'>Paintings</li>
+        <li id='galDisp_Neon'>Neon</li>
+        <li id='galDisp_Bronze'>Bronze</li>
+        <li id='galDisp_Paper'>Paper</li>
+        <li id='galDisp_Etchings'>Etchings</li>
+        <li id='galDisp_Pottery'>Pottery</li>
+        <li id='galDisp_Silkscreen'>Silkscreen</li>
+        <li id='galDisp_Miniatures'>Miniatures</li>
+        <li id='galDisp_Plexiglass'>Plexiglass</li>
+      </ul>
+    </div> <!-- ixPgMediaSideBar -->
+
+  <div id='dispPanel'>
+    <!-- Main window iFrame, for displaying web pages, search results, registration forms - - - -->
+    <iframe class='ixPgIFrame' name='ixPgIFrame' id='ixPgIFrame' src='30_Home.htm'>
+    </iframe>
+  </div> <!-- end #dispPanel -->
+  </div> <!-- end #mainContent (flex) -->
+
+  <script>
+    var gDispStyle = 'grid';
+    var gCurMedium = 'All';
+
+    document.getElementById('dispStyle_Grid').addEventListener('click', changeIFrameSource);
+    document.getElementById('dispStyle_FullImage').addEventListener('click', changeIFrameSource);
+
+    document.getElementById('dispStyle_Grid').style.border = '3px solid red';
+
+    var listItems = document.getElementsByTagName('li');
+    for (var index = 0; index < listItems.length; ++index) {
+      listItems[index].addEventListener('click', changeIFrameSource );
+    }
+
+    function changeIFrameSource(event) {
+//alert( 'element clicked is:' + event.target.id );
+      var newSrc = '';
+      switch( event.target.id ){
+        case 'topMenu_HOME': newSrc='30_Home.htm'; break;
+        case 'topMenu_BIO': newSrc='31_Bio.htm'; break;
+        case 'topMenu_THEMES': newSrc='32_Themes.htm'; break;
+        case 'topMenu_EXHIB': newSrc='33_Exhibitions.htm'; break;
+        case 'topMenu_ARTICLES': newSrc='34_Articles.htm'; break;
+        case 'topMenu_CONTACT': newSrc='35_Contact.htm'; break;
+
+        case 'dispStyle_Grid':
+          gDispStyle = 'grid';
+          newSrc = '22_DispGrid.php?medium=' + gCurMedium;
+          document.getElementById('dispStyle_Grid').style.border = '3px solid red';
+          document.getElementById('dispStyle_FullImage').style.border = '1px solid black';
+          break;
+        case 'dispStyle_FullImage':
+          gDispStyle = 'full';
+          newSrc = '21_DispFullImages.php?medium=' + gCurMedium;
+          document.getElementById('dispStyle_FullImage').style.border = '3px solid red';
+          document.getElementById('dispStyle_Grid').style.border = '1px solid black';
+          break;
+
+        case 'galDisp_All':
+        case 'galDisp_Paintings':
+        case 'galDisp_Neon':
+        case 'galDisp_Bronze':
+        case 'galDisp_Paper':
+        case 'galDisp_Etchings':
+        case 'galDisp_Pottery':
+        case 'galDisp_Silkscreen':
+        case 'galDisp_Miniatures':
+        case 'galDisp_Plexiglass':
+          var medium = event.target.id.slice( 8 );
+          medium = (medium == 'Paintings') ? 'Oil' : medium;
+          gCurMedium = medium;
+          newSrc = ( (gDispStyle=='grid') ? '22_DispGrid.php?medium=' : '21_DispFullImages.php?medium=') + medium;
+        break;
+      }
+
+      if( newSrc != '' ) {
+        document.getElementById('ixPgIFrame').src = newSrc; // assign url to src property
+      }
+    }
+
+
+  </script>
+
+</body>
+</html>

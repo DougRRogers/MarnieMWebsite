@@ -1,0 +1,146 @@
+/* 62_Admin.css 21-10-08   - CSS file for all NTOM Admin html and php files   */
+
+/* --------------- Admin page ---------------*/
+.showCatInnerContent {
+  margin: 5px;
+}
+
+.mainTable tr td {
+  padding: 5px;
+  border: 1px solid black;
+  background-color: ivory;
+}
+
+.infoTable th, tr td {
+  border: 1px solid black;
+  background-color: ivory;
+}
+
+.infoTable td {
+  text-align: center;
+  padding: 5px;
+}
+
+fieldset.selectionFieldSet {
+  width: 450px;
+
+}
+
+.selectionTable {
+  margin-left: 15px;
+  border: none;
+  padding: 5px;
+}
+
+.selectionTable tr td {
+  border: none;
+  text-align: left;
+  padding: 5px;
+}
+
+.infoTable th {
+  border: 1px solid black;
+  background-color: coral;
+}
+
+span.MainTitle {
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+img.AdminThumbImg {
+  border: 1px solid black;
+  max-height: 50px;
+  max-width: 50px;
+}
+
+td {  text-align: center; }
+
+/* ----------  Artwork Info -----------------*/
+
+body.aweBody {
+  margin: 10px;
+  padding: 10px;
+  width: 600px;
+  font-size: 10pt;
+}
+
+div.content {
+  border: 1px solid blue;
+  padding: 5px;
+  margin: 5px;
+  background-color: powderblue;
+}
+
+.btnBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* width: 1%; */
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+
+.btnsGroupBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid black;
+
+}
+
+.basicInfo {
+  /* border: 1px solid blue; */
+  width: 60%;
+}
+.imgAndCaption {
+  /* border: 1px solid blue; */
+  height: 100%;
+}
+
+.infoAndImg {
+  display: flex;
+  /* border: 1px solid green; */
+}
+
+span.IDCode {
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.width80pct {
+  width: 80%;
+}
+
+.aweImg {
+  width: 95%;
+  border: 1px solid black;
+  margin: auto;
+  box-shadow: 0px 3px 3px black;
+}
+
+
+.imageDiv{
+  /* border: 1px solid yellow; */
+  width: 200px;
+  margin: auto;
+}
+
+div.aweMedStyThemes {
+  /* border: 1px solid black; */
+  margin: 0 5px;
+}
+
+div.basicInfoLine {
+  display: flex;
+  justify-content: space-between; /* flex-start; //space-evenly; */
+  /* border: 1px solid black; */
+  margin: 0 5px;
+}
+
+.aweTextArea {
+  width: 95%;
+  height: 60px;
+}
